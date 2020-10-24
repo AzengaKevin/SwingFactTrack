@@ -1,5 +1,7 @@
 package com.jetx.display;
 
+import java.util.concurrent.ExecutionException;
+
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -7,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingWorker;
 
 import com.jetx.model.DoMath;
 
@@ -61,6 +64,7 @@ public class Display extends JFrame {
 		calculateButton = new JButton("Calculate Fibonacci");
 
 		calculateButton.addActionListener(btn -> {
+
 			// Get the number
 			String sNumber = String.valueOf(inputField.getText());
 
@@ -69,11 +73,7 @@ public class Display extends JFrame {
 
 				try {
 
-					int number = Integer.parseInt(sNumber);
-
-					int fibonacci = DoMath.fib(number);
-
-					displayLabel.setText(String.format("Fibonacci(%d) = %d", number, fibonacci));
+					fibbonacciWorker.execute();
 
 				} catch (NumberFormatException e) {
 					JOptionPane.showMessageDialog(this, "The input must be a number", "Number Validation",
@@ -111,5 +111,30 @@ public class Display extends JFrame {
 		setVisible(true);
 
 	}
+
+	private SwingWorker<Integer, Void> fibbonacciWorker = new SwingWorker<>() {
+
+		@Override
+		protected Integer doInBackground() throws Exception {
+
+			int number = Integer.parseInt(inputField.getText().trim());
+
+			int fibonacci = DoMath.fib(number);
+
+			return fibonacci;
+		}
+
+		@Override
+		protected void done() {
+
+			try {
+				displayLabel.setText(String.format("Fibonacci(%s) = %d", inputField.getText().trim(), get()));
+			} catch (InterruptedException | ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	};
 
 }

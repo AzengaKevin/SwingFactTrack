@@ -19,11 +19,15 @@ public class Main {
 		System.out.println("Result: " + result);
 
 		for (Thread th : runningThreads) {
-			System.out.println("Thread Id: " + th.getId());
-			System.out.println("Thread Name: " + th.getName());
-			System.out.println("Thread Priority: " + th.getPriority());
-			System.out.println("Thread State: " + th.getState());
-			System.out.println();
+
+			if (th != null) {
+				System.out.println("Thread Id: " + th.getId());
+				System.out.println("Thread Name: " + th.getName());
+				System.out.println("Thread Priority: " + th.getPriority());
+				System.out.println("Thread State: " + th.getState());
+				System.out.println();
+			}
+
 		}
 	}
 

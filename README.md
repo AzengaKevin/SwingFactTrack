@@ -4,7 +4,8 @@
 
 ## Want to lean more
 
-<p>Checkout the fllowing lesson [Lesson: Concurrency in Swing](https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html "Oracle Java Docs")</p>
+<p>Checkout the fllowing lesson</p>
+[Lesson: Concurrency in Swing](https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html )
 
 ## In A nutshell
 

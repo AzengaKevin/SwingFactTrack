@@ -5,7 +5,7 @@
 ## Want to lean more
 
 <p>Checkout the fllowing lesson</p>
-[Lesson: Concurrency in Swing](https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html )
+[Lesson: Concurrency in Swing](https://docs.oracle.com/javase/tutorial/uiswing/concurrency/index.html)
 
 ## In A nutshell
 
@@ -16,5 +16,9 @@
 * Worker threads || Backroung Threads
 
 <p>You don't have to create your own thread!! Just use whattever is there. I bet things are quite similar with JavaFX</p>
+
+## Screenshot
+
+![Application Frame](https://github.com/AzengaKevin/SwingFactTrack/blob/master/screenshots/window.png "Running Program Screenshot")
 
 

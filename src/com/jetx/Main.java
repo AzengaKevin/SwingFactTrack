@@ -9,7 +9,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		SwingUtilities.invokeLater(() -> {
-			new Display("A Concurrency Test Frame", 600, 400);
+			new Display("Concurrency Lab", 600, 400);
 		});
 
 		Thread[] runningThreads = new Thread[5];

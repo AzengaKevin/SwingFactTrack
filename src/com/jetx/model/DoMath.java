@@ -2,7 +2,7 @@ package com.jetx.model;
 
 public class DoMath {
 
-	public static int fib(int number) {
+	public static long fib(long number) {
 
 		if (number < 2)
 			return number;

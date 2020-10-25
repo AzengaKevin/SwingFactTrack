@@ -72,7 +72,30 @@ public class Display extends JFrame {
 			if (!sNumber.isBlank()) {
 
 				try {
+					SwingWorker<Long, Void> fibbonacciWorker = new SwingWorker<>() {
 
+						@Override
+						protected Long doInBackground() throws Exception {
+
+							long number = Integer.parseInt(sNumber);
+
+							long fibonacci = DoMath.fib(number);
+
+							return fibonacci;
+						}
+
+						@Override
+						protected void done() {
+
+							try {
+								displayLabel.setText(String.format("Fibonacci(%s) = %d", sNumber, get()));
+							} catch (InterruptedException | ExecutionException e) {
+								e.printStackTrace();
+							}
+						}
+
+					};
+					
 					fibbonacciWorker.execute();
 
 				} catch (NumberFormatException e) {
@@ -109,32 +132,7 @@ public class Display extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
+		setName("Concurrency Lab");
 
 	}
-
-	private SwingWorker<Integer, Void> fibbonacciWorker = new SwingWorker<>() {
-
-		@Override
-		protected Integer doInBackground() throws Exception {
-
-			int number = Integer.parseInt(inputField.getText().trim());
-
-			int fibonacci = DoMath.fib(number);
-
-			return fibonacci;
-		}
-
-		@Override
-		protected void done() {
-
-			try {
-				displayLabel.setText(String.format("Fibonacci(%s) = %d", inputField.getText().trim(), get()));
-			} catch (InterruptedException | ExecutionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-	};
-
 }
